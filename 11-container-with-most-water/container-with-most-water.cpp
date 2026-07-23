@@ -12,7 +12,7 @@ public:
             int w=right-left;
             int area=h*w;
             maxArea=max(area,maxArea);
-            if (height[left]<height[right]){
+            if (height[left]<=height[right]){
                 left++;
             }
             else{
