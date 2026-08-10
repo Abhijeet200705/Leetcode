@@ -1,29 +1,26 @@
 class Solution {
 public:
     int countSubstrings(string s) {
-        int count=0;
         int n=s.size();
-        for(int i=0;i<s.size();i++){
-            string sub="";
-            for(int j=i;j<n;j++){
-                sub+=s[j];
-                if(isPalindrome(sub)==true) count++;
-            }
+        int count=0;
+
+        for(int i=0; i< n ;i++){
+            count+=expands(s,i,i);
+            count+=expands(s,i,i+1);
+
+
         }
         return count;
     }
-bool isPalindrome(string &sub){
-    int left=0;
-    int right=sub.size()-1;
 
-    while(left<right){
-        if(sub[left]!=sub[right]){
-            return false;
+    int expands(string s, int left, int right){
+        int count=0;
+        while(left>=0 && right < s.size() && s[left]==s[right]){
+            count++;
+            left--;
+            right++;
+
         }
-        left++;
-        right--;
-
+        return count;
     }
-    return true;
-}
 };
