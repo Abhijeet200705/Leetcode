@@ -3,7 +3,7 @@ public:
     long long func(vector<int>& piles, int k){
         long long ans=0;
         for(int i=0;i<piles.size();i++){
-            ans+=(piles[i]+k-1)/k;
+            ans+=ceil((double(piles[i]))/double(k));
         }
         return ans;
     }
