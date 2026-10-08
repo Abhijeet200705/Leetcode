@@ -15,7 +15,10 @@ public:
                     dp[i][j]=1;
                     continue;
                 }
-                // if(dp[i][j]!=-1) return dp[i][j];
+                if(dp[i][j]!=-1) {
+                    return dp[i][j];
+                    continue;
+                }
                 int up=0;
                 int left=0;
                 if(i>0){
