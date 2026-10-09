@@ -1,22 +1,23 @@
 class Solution {
-
-int f(int i, int j, vector<vector<int>>& triangle, vector<vector<int>>& dp){
-    int m = triangle.size();
-
-    if(i == m-1) return triangle[i][j];
-
-    if(dp[i][j] != 1e9) return dp[i][j];
-
-    int down  = f(i+1, j,   triangle, dp);
-    int right = f(i+1, j+1, triangle, dp);
-
-    return dp[i][j] = triangle[i][j] + min(down, right);
-}
-
 public:
     int minimumTotal(vector<vector<int>>& triangle) {
-        int m = triangle.size();
-        vector<vector<int>> dp(m, vector<int>(m, 1e9));
-        return f(0, 0, triangle, dp);
+        int n = triangle.size();
+        vector<vector<int>> dp(n, vector<int> (n, 0));
+
+        for(int j=0;j<n;j++){
+            dp[n-1][j]=triangle[n-1][j];
+        }
+
+        for(int i =n-2 ;i>=0;i--){
+            for(int j=0;j<=i;j++){
+                
+
+                int down = dp[i+1][j] ;
+                int right = dp[i+1][j+1];
+
+                dp[i][j]=triangle[i][j] + min(down, right);
+            }
+        }
+        return dp[0][0];
     }
 };
