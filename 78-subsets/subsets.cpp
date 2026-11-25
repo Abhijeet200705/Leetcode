@@ -7,6 +7,7 @@ void subsets(vector<int> &nums, int i, vector<vector<int>> &subs, vector<int> &s
         sub.push_back(nums[j]);
         subsets(nums, j+1, subs, sub);
         sub.pop_back();
+        
 
     }
 }
